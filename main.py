@@ -2,7 +2,7 @@ from gestor_datos import cargar_datos
 import funciones
 
 def mostrar_menu():
-    print("\n1. Añadir | 2. Listar | 3. Buscar | 4. Editar | 5. Eliminar | 6. Salir")
+    print("\n1. Añadir \n 2. Listar \n 3. Buscar \n 4. Editar \n 5. Eliminar \n 6. Salir")
     return input("Opción: ")
 
 def main():
