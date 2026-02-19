@@ -24,7 +24,7 @@ def validar_valoracion(entrada):
     try:
         valoracion = float(entrada)
         if 0.0 <= valoracion <= 10.0:
-            return round(valoracion, 4)
+            return round(valoracion, 2)
         return None
     except ValueError:
         return None
