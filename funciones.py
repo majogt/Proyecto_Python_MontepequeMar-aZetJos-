@@ -7,7 +7,6 @@ def añadir_elemento(coleccion):
         print("El título es obligatorio.")
         return
 
-    tipo = input("Tipo (Libro/Película/Música): ").strip()
     autor = input("Autor/Director/Artista: ").strip()
     genero = input("Género: ").strip()
     
@@ -31,51 +30,31 @@ def añadir_elemento(coleccion):
     print("Elemento añadido.")
 
 def listar_elementos(coleccion):
-    print("\n--- Colección ---")
+    print("\n" + "="*50)
+    print(f"{'MI COLECCIÓN CULTURAL':^50}")
+    print("="*50)
+    
     if not coleccion:
         print("La colección está vacía.")
         return
 
-    header = f"{'Título':<25} | {'Tipo':<12} | {'Autor':<20} | {'Val.'}"
-    print(header)
-    print("-" * len(header))
+    categorias = ["Libro", "Película", "Música"]
     
-    for el in coleccion:
-        print(f"{el['titulo']:<25} | {el['tipo']:<12} | {el['autor']:<20} | {el['valoracion']:.4f}")
-
-def buscar_elemento(coleccion):
-    print("\n--- Buscar ---")
-    criterio = input("Término de búsqueda: ").lower().strip()
-    resultados = [el for el in coleccion if criterio in el['titulo'].lower() or criterio in el['autor'].lower()]
+    for cat in categorias:
+        items = [el for el in coleccion if el['tipo'] == cat]
+        
+        if items:
+            print(f"\n▶ {cat.upper()}S ({len(items)})")
+            print(f"{'-'*75}")
+            header = f"{'Título':<25} | {'Autor/Artista':<25} | {'Val.'}"
+            print(header)
+            print(f"{'-'*75}")
+            
+            for el in items:
+                print(f"{el['titulo']:<25} | {el['autor']:<25} | {el['valoracion']:.4f}")
     
-    if resultados:
-        for el in resultados:
-            print(f"- {el['titulo']} ({el['tipo']}) - {el['valoracion']:.4f}")
-    else:
-        print("Sin coincidencias.")
-
-def editar_elemento(coleccion):
-    titulo_buscar = input("\nTítulo a editar: ").strip()
-    for el in coleccion:
-        if el['titulo'].lower() == titulo_buscar.lower():
-            el['titulo'] = input(f"Nuevo título [{el['titulo']}]: ") or el['titulo']
-            nueva_val = input(f"Nueva valoración [{el['valoracion']}]: ")
-            if nueva_val:
-                val_valida = validar_valoracion(nueva_val)
-                if val_valida is not None:
-                    el['valoracion'] = val_valida
-            guardar_datos(coleccion)
-            print("Actualizado.")
-            return
-    print("No encontrado.")
-
-def eliminar_elemento(coleccion):
-    titulo = input("\nTítulo a eliminar: ").strip()
-    original = len(coleccion)
-    coleccion[:] = [el for el in coleccion if el['titulo'].lower() != titulo.lower()]
-    if len(coleccion) < original:
-        guardar_datos(coleccion)
-        print("Eliminado.")
-    else:
-        print("No encontrado.")
-
+    otros = [el for el in coleccion if el['tipo'] not in categorias]
+    if otros:
+        print(f"\n▶ OTROS ({len(otros)})")
+        for el in otros:
+            print(f"{el['titulo']:<25} | {el['tipo']:<12} | {el['valoracion']:.4f}")
