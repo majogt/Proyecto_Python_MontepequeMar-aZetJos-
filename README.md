@@ -1,3 +1,5 @@
 # Proyecto_Python_MontepequeMariaZetJose
 
 Este trabajo se centra en una aplicación de consola hecha en Python, destinada a administrar colecciones personales de libros, películas y música de manera efectiva .Ofrece un sistema de registro organizado que abarca el título, el autor, el género y una calificación individualizada con cuatro cifras decimales de precisión .La estructura del sistema es modular, lo que implica que la lógica del negocio y la interfaz de usuario se encuentran en archivos distintos (main .py, funciones .py y gestor_datos .py), favoreciendo así la escalabilidad y un código limpio .Además, el software mantiene la integridad y la permanencia de los datos a través de un archivo coleccion .json, que permite la carga y el guardado automáticos del estado de la colección entre diferentes sesiones, lo que facilita la organización de grandes cantidades de elementos culturales de forma eficiente y accesible .
+
+En este proyecto se implementaron los cambios solicitados para el funcionamiento de gestor de validacion de datos estadisticos.
